@@ -1,0 +1,11 @@
+id_campeonato,nombre,fecha_inicio,premio,id_presidente
+CAM007,Copa Integracion,2026-04-02,1100,PRE007
+CAM005,Liga Deportiva Sur,2026-03-05,700,PRE005
+CAM001,Copa Barrial Norte,2026-01-10,1000,PRE001
+CAM010,Super Copa Barrial,2026-05-15,1500,PRE010
+CAM003,Torneo Juvenil,2026-02-01,500,PRE003
+CAM008,Liga Master,2026-04-20,600,PRE008
+CAM004,Copa Zamora,2026-02-12,1200,PRE004
+CAM006,Campeonato Amigos,2026-03-18,900,PRE006
+CAM009,Torneo Relampago,2026-05-01,400,PRE009
+CAM002,Liga Comunitaria,2026-01-15,800,PRE002

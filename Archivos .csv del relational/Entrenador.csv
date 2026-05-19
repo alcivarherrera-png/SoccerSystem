@@ -1,0 +1,11 @@
+id_entrenador,certificado,cedula_persona,nombre
+ENT004,Habilitado,1100000004,Guerreros
+ENT009,No Habilitado,1100000009,Estrellas
+ENT003,No Habilitado,1100000003,LeonesFC
+ENT002,Habilitado,1100000002,Titanes
+ENT007,Habilitado,1100000007,Atleticos
+ENT008,Habilitado,1100000008,UnionFC
+ENT010,Habilitado,1100000010,Juventud
+ENT006,No Habilitado,1100000006,RealSur
+ENT001,Habilitado,1100000001,Halcones
+ENT005,Habilitado,1100000005,Dinamicos

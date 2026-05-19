@@ -1,0 +1,11 @@
+id_sancion,tipo_sancion,motivo,minuto
+SAN008,Tarjeta_Amarilla,Entrada fuerte,54
+SAN009,Tarjeta_Amarilla,Sujetacion rival,38
+SAN003,Tarjeta_Amarilla,Mano intencional,23
+SAN004,Tarjeta_Amarilla,Reclamo arbitral,30
+SAN010,Tarjeta_Roja,Conducta violenta,81
+SAN006,Tarjeta_Amarilla,Demora de juego,15
+SAN005,Tarjeta_Roja,Agresion rival,67
+SAN001,Tarjeta_Amarilla,Falta peligrosa,12
+SAN002,Tarjeta_Roja,Juego brusco,45
+SAN007,Tarjeta_Roja,Doble amarilla,72
