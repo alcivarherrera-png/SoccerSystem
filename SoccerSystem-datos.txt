@@ -1,0 +1,275 @@
+
+INSERT INTO Escenario (identificador, tamaño, direccion) VALUES
+('ESC001', 'Grande', 'Barrio Norte'),
+('ESC002', 'Mediano', 'Barrio Sur'),
+('ESC003', 'Grande', 'Parque Central'),
+('ESC004', 'Pequeño', 'Ciudad Deportiva'),
+('ESC005', 'Grande', 'Av. Principal'),
+('ESC006', 'Mediano', 'Sector Oeste'),
+('ESC007', 'Pequeño', 'Barrio Unido'),
+('ESC008', 'Grande', 'Zona Central'),
+('ESC009', 'Mediano', 'Los Almendros'),
+('ESC010', 'Grande', 'Ciudadela Sur');
+
+INSERT INTO Estadisticas (identificador, cantidad_goles, cantidad_corners, marcador_finas) VALUES
+('EST001', 3, 5, '2-1'),
+('EST002', 4, 7, '3-1'),
+('EST003', 2, 4, '1-1'),
+('EST004', 5, 8, '4-1'),
+('EST005', 1, 3, '1-0'),
+('EST006', 6, 9, '3-3'),
+('EST007', 4, 6, '2-2'),
+('EST008', 3, 5, '2-1'),
+('EST009', 5, 10, '4-1'),
+('EST010', 2, 4, '1-1');
+
+INSERT INTO Sancion (identificador, tipo_sancion, motivo, minuto) VALUES
+('SAN001', 'Tarjeta_Amarilla', 'Falta fuerte', '15'),
+('SAN002', 'Tarjeta_Roja', 'Agresion', '32'),
+('SAN003', 'Tarjeta_Amarilla', 'Mano intencional', '27'),
+('SAN004', 'Tarjeta_Roja', 'Insulto arbitro', '44'),
+('SAN005', 'Tarjeta_Amarilla', 'Juego brusco', '18'),
+('SAN006', 'Tarjeta_Roja', 'Doble amarilla', '70'),
+('SAN007', 'Tarjeta_Amarilla', 'Retrasar juego', '39'),
+('SAN008', 'Tarjeta_Roja', 'Entrada peligrosa', '52'),
+('SAN009', 'Tarjeta_Amarilla', 'Simulacion', '61'),
+('SAN010', 'Tarjeta_Roja', 'Conducta violenta', '80');
+
+INSERT INTO Usuario (identificador, nombre, apellido) VALUES
+('USR001', 'Carlos', 'Perez'),
+('USR002', 'Maria', 'Lopez'),
+('USR003', 'Jorge', 'Mendoza'),
+('USR004', 'Ana', 'Ramirez'),
+('USR005', 'Luis', 'Castro'),
+('USR006', 'Diana', 'Sanchez'),
+('USR007', 'Pedro', 'Vega'),
+('USR008', 'Camila', 'Torres'),
+('USR009', 'Jose', 'Herrera'),
+('USR010', 'Lucia', 'Ortega');
+
+INSERT INTO Presidente (identificador, codigo_usuario) VALUES
+('PRE001', 'USR001'),
+('PRE002', 'USR002'),
+('PRE003', 'USR003'),
+('PRE004', 'USR004'),
+('PRE005', 'USR005'),
+('PRE006', 'USR006'),
+('PRE007', 'USR007'),
+('PRE008', 'USR008'),
+('PRE009', 'USR009'),
+('PRE010', 'USR010');
+
+
+INSERT INTO Personal_Mesa (identificador, codigo_usuario) VALUES
+('PM001', 'USR001'),
+('PM002', 'USR002'),
+('PM003', 'USR003'),
+('PM004', 'USR004'),
+('PM005', 'USR005'),
+('PM006', 'USR006'),
+('PM007', 'USR007'),
+('PM008', 'USR008'),
+('PM009', 'USR009'),
+('PM010', 'USR010');
+
+
+INSERT INTO Campeonato (identificador, nombre, fecha_inicio, premio, codigo_presidente) VALUES
+('CAM001', 'Copa Barrial Norte', '2026-01-10', 1000, 'PRE001'),
+('CAM002', 'Liga Comunitaria', '2026-01-15', 800 , 'PRE002'),
+('CAM003', 'Torneo Juvenil', '2026-02-01', 500 , 'PRE003'),
+('CAM004', 'Copa Zamora', '2026-02-12', 1200 , 'PRE004'),
+('CAM005', 'Liga Deportiva Sur', '2026-03-05', 700, 'PRE005'),
+('CAM006', 'Campeonato Amigos', '2026-03-18', 900, 'PRE006'),
+('CAM007', 'Copa Integracion', '2026-04-02', 1100, 'PRE007'),
+('CAM008', 'Liga Master', '2026-04-20', 600, 'PRE008'),
+('CAM009', 'Torneo Relampago', '2026-05-01', 400 , 'PRE009'),
+('CAM010', 'Super Copa Barrial', '2026-05-15', 1500, 'PRE010');
+
+
+INSERT INTO Encuentro (identificador, fecha, duracion, codigo_campeonato, codigo_stast, id_personal) VALUES
+('ENC001', '2026-01-12', '90 min', 'CAM001', 'EST001', 'PM001'),
+('ENC002', '2026-01-18', '90 min', 'CAM002', 'EST002', 'PM002'),
+('ENC003', '2026-02-03', '95 min', 'CAM003', 'EST003', 'PM003'),
+('ENC004', '2026-02-15', '90 min', 'CAM004', 'EST004', 'PM004'),
+('ENC005', '2026-03-08', '92 min', 'CAM005', 'EST005', 'PM005'),
+('ENC006', '2026-03-20', '90 min', 'CAM006', 'EST006', 'PM006'),
+('ENC007', '2026-04-05', '94 min', 'CAM007', 'EST007', 'PM007'),
+('ENC008', '2026-04-22', '90 min', 'CAM008', 'EST008', 'PM008'),
+('ENC009', '2026-05-03', '91 min', 'CAM009', 'EST009', 'PM009'),
+('ENC010', '2026-05-18', '90 min', 'CAM010', 'EST010', 'PM010');
+
+
+INSERT INTO Campeonato_Escenario (identificador, codigo_campeonato, codigo_escenario) VALUES
+('CE001', 'CAM001', 'ESC001'),
+('CE002', 'CAM002', 'ESC002'),
+('CE003', 'CAM003', 'ESC003'),
+('CE004', 'CAM004', 'ESC004'),
+('CE005', 'CAM005', 'ESC005'),
+('CE006', 'CAM006', 'ESC006'),
+('CE007', 'CAM007', 'ESC007'),
+('CE008', 'CAM008', 'ESC008'),
+('CE009', 'CAM009', 'ESC009'),
+('CE010', 'CAM010', 'ESC010');
+
+
+INSERT INTO Equipo (nombre, color_uniforme, denominacion, id_personal) VALUES
+('Halcones', 'Rojo', 'Local', 'PM001'),
+('Titanes', 'Azul', 'Visitante', 'PM002'),
+('LeonesFC', 'Verde', 'Local', 'PM003'),
+('Guerreros', 'Negro', 'Visitante', 'PM004'),
+('Dinamicos', 'Blanco', 'Local', 'PM005'),
+('RealSur', 'Amarillo', 'Visitante', 'PM006'),
+('Atleticos', 'Celeste', 'Local', 'PM007'),
+('UnionFC', 'Naranja', 'Visitante', 'PM008'),
+('Estrellas', 'Morado', 'Local', 'PM009'),
+('Juventud', 'Gris', 'Visitante', 'PM010');
+
+
+INSERT INTO Campeonato_Equipo (identificador, codigo_campeonato, nombre_equipo) VALUES
+('CEQ001', 'CAM001', 'Halcones'),
+('CEQ002', 'CAM002', 'Titanes'),
+('CEQ003', 'CAM003', 'LeonesFC'),
+('CEQ004', 'CAM004', 'Guerreros'),
+('CEQ005', 'CAM005', 'Dinamicos'),
+('CEQ006', 'CAM006', 'RealSur'),
+('CEQ007', 'CAM007', 'Atleticos'),
+('CEQ008', 'CAM008', 'UnionFC'),
+('CEQ009', 'CAM009', 'Estrellas'),
+('CEQ010', 'CAM010', 'Juventud');
+
+INSERT INTO Persona (cedula, nombre, apellido) VALUES
+('1100000001', 'Carlos', 'Mendoza'),
+('1100000002', 'Luis', 'Vega'),
+('1100000003', 'Andres', 'Lopez'),
+('1100000004', 'Kevin', 'Sanchez'),
+('1100000005', 'Mateo', 'Castro'),
+('1100000006', 'Diego', 'Ramirez'),
+('1100000007', 'Jhon', 'Torres'),
+('1100000008', 'Pedro', 'Guerrero'),
+('1100000009', 'Bryan', 'Ortega'),
+('1100000010', 'Marco', 'Salinas'),
+('1100000011', 'Jose', 'Mora'),
+('1100000012', 'Daniel', 'Herrera'),
+('1100000013', 'Steven', 'Cueva'),
+('1100000014', 'Michael', 'Rojas'),
+('1100000015', 'Anthony', 'Luna'),
+('1100000016', 'Cristian', 'Valdez'),
+('1100000017', 'Fernando', 'Jaramillo'),
+('1100000018', 'Angel', 'Pineda'),
+('1100000019', 'Leonardo', 'Paz'),
+('1100000020', 'Alex', 'Benitez'),
+('1100000021', 'David', 'Cabrera'),
+('1100000022', 'Byron', 'Reyes'),
+('1100000023', 'Gabriel', 'Cedeno'),
+('1100000024', 'Victor', 'Maldonado'),
+('1100000025', 'Ronald', 'Flores'),
+('1100000026', 'Erick', 'Quinde'),
+('1100000027', 'Santiago', 'Bravo'),
+('1100000028', 'Jean', 'Aguirre'),
+('1100000029', 'Pablo', 'Suarez'),
+('1100000030', 'Wilson', 'Carrion'),
+('1100000031', 'Edgar', 'Celi'),
+('1100000032', 'Ivan', 'Vasquez'),
+('1100000033', 'Ricardo', 'Ochoa'),
+('1100000034', 'Manuel', 'Romero'),
+('1100000035', 'Hector', 'Yaguana'),
+('1100000036', 'Julio', 'Narvaez'),
+('1100000037', 'Patricio', 'Morocho'),
+('1100000038', 'Jonathan', 'Mina'),
+('1100000039', 'Cesar', 'Carpio'),
+('1100000040', 'Raul', 'Soto'),
+('1100000041', 'Esteban', 'Guaman'),
+('1100000042', 'Kevin', 'Poma'),
+('1100000043', 'Mauricio', 'Burneo'),
+('1100000044', 'Adrian', 'Paredes'),
+('1100000045', 'Franklin', 'Tocto'),
+('1100000046', 'Oscar', 'Jimenez'),
+('1100000047', 'Miguel', 'Pinto'),
+('1100000048', 'Henry', 'Alvarado'),
+('1100000049', 'Javier', 'Espinoza'),
+('1100000050', 'Nicolas', 'Sarmiento');
+
+INSERT INTO Jugador (numero_camisa, posicion_juego, cedula_persona, nombre_equipo) VALUES
+(12, 'Arquero', '1100000001', 'Halcones'),
+(7, 'Defensa', '1100000002', 'Halcones'),
+(19, 'Mediocampo', '1100000003', 'Halcones'),
+(4, 'Delantero', '1100000004', 'Halcones'),
+(25, 'Extremo', '1100000005', 'Halcones'),
+
+(3, 'Arquero', '1100000006', 'Titanes'),
+(18, 'Defensa', '1100000007', 'Titanes'),
+(9, 'Mediocampo', '1100000008', 'Titanes'),
+(27, 'Delantero', '1100000009', 'Titanes'),
+(14, 'Extremo', '1100000010', 'Titanes'),
+
+(22, 'Arquero', '1100000011', 'LeonesFC'),
+(6, 'Defensa', '1100000012', 'LeonesFC'),
+(31, 'Mediocampo', '1100000013', 'LeonesFC'),
+(11, 'Delantero', '1100000014', 'LeonesFC'),
+(2, 'Extremo', '1100000015', 'LeonesFC'),
+
+(35, 'Arquero', '1100000016', 'Guerreros'),
+(16, 'Defensa', '1100000017', 'Guerreros'),
+(8, 'Mediocampo', '1100000018', 'Guerreros'),
+(29, 'Delantero', '1100000019', 'Guerreros'),
+(5, 'Extremo', '1100000020', 'Guerreros'),
+
+(40, 'Arquero', '1100000021', 'Dinamicos'),
+(13, 'Defensa', '1100000022', 'Dinamicos'),
+(1, 'Mediocampo', '1100000023', 'Dinamicos'),
+(24, 'Delantero', '1100000024', 'Dinamicos'),
+(10, 'Extremo', '1100000025', 'Dinamicos'),
+
+(17, 'Arquero', '1100000026', 'RealSur'),
+(28, 'Defensa', '1100000027', 'RealSur'),
+(15, 'Mediocampo', '1100000028', 'RealSur'),
+(33, 'Delantero', '1100000029', 'RealSur'),
+(21, 'Extremo', '1100000030', 'RealSur'),
+
+(30, 'Arquero', '1100000031', 'Atleticos'),
+(23, 'Defensa', '1100000032', 'Atleticos'),
+(41, 'Mediocampo', '1100000033', 'Atleticos'),
+(20, 'Delantero', '1100000034', 'Atleticos'),
+(32, 'Extremo', '1100000035', 'Atleticos'),
+
+(26, 'Arquero', '1100000036', 'UnionFC'),
+(34, 'Defensa', '1100000037', 'UnionFC'),
+(42, 'Mediocampo', '1100000038', 'UnionFC'),
+(37, 'Delantero', '1100000039', 'UnionFC'),
+(44, 'Extremo', '1100000040', 'UnionFC'),
+
+(38, 'Arquero', '1100000041', 'Estrellas'),
+(45, 'Defensa', '1100000042', 'Estrellas'),
+(36, 'Mediocampo', '1100000043', 'Estrellas'),
+(48, 'Delantero', '1100000044', 'Estrellas'),
+(43, 'Extremo', '1100000045', 'Estrellas'),
+
+(50, 'Arquero', '1100000046', 'Juventud'),
+(39, 'Defensa', '1100000047', 'Juventud'),
+(46, 'Mediocampo', '1100000048', 'Juventud'),
+(47, 'Delantero', '1100000049', 'Juventud'),
+(49, 'Extremo', '1100000050', 'Juventud');
+
+INSERT INTO Entrenador (identificador, certificado, cedula_persona, nombre_equipo) VALUES
+('ENT001', 'Habilitado', '1100000001', 'Halcones'),
+('ENT002', 'Habilitado', '1100000002', 'Titanes'),
+('ENT003', 'No Habilitado', '1100000003', 'LeonesFC'),
+('ENT004', 'Habilitado', '1100000004', 'Guerreros'),
+('ENT005', 'Habilitado', '1100000005', 'Dinamicos'),
+('ENT006', 'No Habilitado', '1100000006', 'RealSur'),
+('ENT007', 'Habilitado', '1100000007', 'Atleticos'),
+('ENT008', 'Habilitado', '1100000008', 'UnionFC'),
+('ENT009', 'No Habilitado', '1100000009', 'Estrellas'),
+('ENT010', 'Habilitado', '1100000010', 'Juventud');
+
+INSERT INTO Sancion_Persona (id_sancion_persona, cedula_persona, id_sancion) VALUES
+(1, '1100000001', 'SAN001'),
+(2, '1100000002', 'SAN002'),
+(3, '1100000003', 'SAN003'),
+(4, '1100000004', 'SAN004'),
+(5, '1100000005', 'SAN005'),
+(6, '1100000006', 'SAN006'),
+(7, '1100000007', 'SAN007'),
+(8, '1100000008', 'SAN008'),
+(9, '1100000009', 'SAN009'),
+(10, '1100000010', 'SAN010');
