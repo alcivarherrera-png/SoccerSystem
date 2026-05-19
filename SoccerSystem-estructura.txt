@@ -1,0 +1,114 @@
+create table Escenario( 
+id_escenario VARCHAR(10) PRIMARY KEY,
+tamanio VARCHAR (10), 
+direccion VARCHAR (25) 
+);
+
+create table Estadisticas( 
+id_estadistica VARCHAR (10) PRIMARY KEY, 
+cantidad_goles int, 
+cantidad_corners int, 
+marcador_final VARCHAR (10) 
+);
+
+create table Sancion( 
+id_sancion VARCHAR(10) PRIMARY KEY, 
+tipo_sancion ENUM ("Tarjeta_Amarilla", "Tarjeta_Roja"), 
+motivo VARCHAR (25) NOT NULL, 
+minuto INT NOT NULL 
+);
+
+create table Usuario( 
+id_usuario VARCHAR(10) PRIMARY KEY, 
+nombre VARCHAR (15) NOT NULL, 
+apellido VARCHAR (15) NOT NULL 
+);
+
+create table Presidente( 
+id_presidente VARCHAR (10) PRIMARY KEY, 
+codigo_usuario VARCHAR(10), 
+FOREIGN KEY (codigo_usuario) REFERENCES Usuario(id_usuario) 
+);
+
+create table Personal_Mesa( 
+id_personal_mesa VARCHAR (10) PRIMARY KEY, 
+codigo_usuario VARCHAR (10), 
+FOREIGN KEY (codigo_usuario) REFERENCES Usuario(id_usuario) 
+);
+
+create table Campeonato( 
+id_campeonato VARCHAR (10) PRIMARY KEY, 
+nombre VARCHAR (25) NOT NULL, 
+fecha_inicio DATE NOT NULL, 
+premio INT NOT NULL,
+codigo_presidente VARCHAR (10), 
+FOREIGN KEY (codigo_presidente) REFERENCES Presidente(id_presidente) 
+);
+
+create table Encuentro( 
+id_encuentro VARCHAR (10) PRIMARY KEY, 
+fecha DATE NOT NULL, 
+duracion VARCHAR (10) NOT NULL, 
+codigo_campeonato VARCHAR (10), 
+codigo_stast VARCHAR (10), 
+id_personal VARCHAR (10), 
+FOREIGN KEY (codigo_campeonato) REFERENCES Campeonato(id_campeonato), 
+FOREIGN KEY (codigo_stast) REFERENCES Estadisticas(id_estadistica),
+FOREIGN KEY (id_personal) REFERENCES Personal_Mesa(id_personal_mesa) 
+);
+
+create table Campeonato_Escenario( 
+id_camp_escenario VARCHAR (10) PRIMARY KEY, 
+codigo_campeonato VARCHAR (10) NOT NULL, 
+codigo_escenario VARCHAR (10) NOT NULL, 
+FOREIGN KEY (codigo_campeonato) REFERENCES Campeonato(id_campeonato), 
+FOREIGN KEY (codigo_escenario) REFERENCES Escenario(id_escenario) 
+);
+
+create table Equipo( 
+nombre VARCHAR(15) PRIMARY KEY,
+color_uniforme VARCHAR (10) NOT NULL,
+denominacion ENUM ("Visitante", "Local") NOT NULL, 
+id_personal VARCHAR (10) NOT NULL, 
+FOREIGN KEY (id_personal) REFERENCES Personal_Mesa(id_personal_mesa) 
+);
+
+create table Campeonato_Equipo(
+id_camp_equipo VARCHAR (10) PRIMARY KEY,
+codigo_campeonato VARCHAR (10) NOT NULL,
+nombre_equipo VARCHAR (15) NOT NULL,
+FOREIGN KEY (codigo_campeonato) REFERENCES Campeonato(id_campeonato),
+FOREIGN KEY (nombre_equipo) REFERENCES Equipo(nombre)
+);
+
+create table Persona(
+cedula VARCHAR (10) PRIMARY KEY,
+nombre VARCHAR (15) NOT NULL,
+apellido VARCHAR (15) NOT NULL
+);
+
+CREATE TABLE Jugador(
+numero_camisa INT PRIMARY KEY,
+posicion_juego VARCHAR(15),
+cedula_persona VARCHAR(10) NOT NULL,
+nombre_equipo VARCHAR(15) NOT NULL,
+FOREIGN KEY (cedula_persona) REFERENCES Persona(cedula),
+FOREIGN KEY (nombre_equipo) REFERENCES Equipo(nombre)
+);
+
+create table Entrenador(
+id_entrenador VARCHAR (10) PRIMARY KEY,
+certificado ENUM ("Habilitado", "No Habilitado") NOT NULL,
+cedula_persona VARCHAR (10) NOT NULL,
+nombre_equipo VARCHAR (15) NOT NULL,
+FOREIGN KEY (cedula_persona) REFERENCES Persona(cedula),
+FOREIGN KEY (nombre_equipo) REFERENCES Equipo(nombre)
+);
+
+create table Sancion_Persona( 
+id_sancion_persona INT AUTO_INCREMENT PRIMARY KEY,
+cedula_persona VARCHAR (10) NOT NULL,
+id_sancion VARCHAR (10) NOT NULL,
+FOREIGN KEY (cedula_persona) REFERENCES Persona(cedula),
+FOREIGN KEY (id_sancion) REFERENCES Sancion(id_sancion)
+);
