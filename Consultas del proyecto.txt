@@ -1,0 +1,64 @@
+Consultas del proyecto:
+
+1. Campeonatos con más de 4 goles en sus Encuentros
+Albregra Relacional:
+π id_campeonato, nombre (σ cantidad_goles > 4 ( campeonato ⋈ encuentro ⋈ estadisticas))
+SQL:
+SELECT c.nombre, c.id_campeonato
+FROM Campeonato c
+JOIN Encuentro e ON e.codigo_campeonato = c.id_campeonato
+JOIN Estadisticas s ON e.codigo_stast = s.id_estadistica
+WHERE s.cantidad_goles > 4;
+
+2. Presidentes con Campeonatos de premio mayor o igual a 900$
+Algebra Relacional:
+π nombre, apellido (usuario ⋈ presidente ⋈ π id_presidente, premio (σ premio >= 900 (campeonato)))
+SQL:
+SELECT u.nombre, u.apellido
+FROM Presidente p
+JOIN Campeonato c ON c.codigo_presidente = p.id_presidente
+JOIN Usuario u ON u.id_usuario = p.codigo_usuario
+WHERE c.premio >= 900;
+
+3.  Jugadores delanteros en escenarios de tamaño Grande
+Algebra Relaciona:
+π cedula_persona (σ posicion_juego == 'Delantero' (jugador)) ∩ π cedula_persona (jugador ⋈ campeonato_equipo ⋈ campeonato ⋈ campeonato_escenario ⋈ (σ tamanio == 'Grande' (escenario)))
+SQL:
+SELECT j.cedula_persona
+FROM Jugador j
+WHERE j.posicion_juego = 'delantero'
+INTERSECT
+SELECT j.cedula_persona
+FROM Jugador j
+JOIN Campeonato_Equipo ce ON ce.nombre_equipo = j.nombre_equipo
+JOIN Campeonato c ON c.id_campeonato = ce.codigo_campeonato
+JOIN Campeonato_Escenario cesc ON cesc.codigo_campeonato = c.id_campeonato
+JOIN Escenario esc ON esc.id_escenario = cesc.codigo_escenario
+WHERE esc.tamanio = 'Grande';
+
+4.  Equipos con Entrenadores no habilitados para dirigir
+Algebra Relacional:
+π nombre (equipo ⋈ entrenador) - π nombre (equipo ⋈ (σ certificado == 'Habilitado' (entrenador)))
+SQL:
+SELECT e.nombre
+FROM Equipo e
+JOIN Entrenador en ON en.nombre_equipo = e.nombre
+WHERE e.nombre NOT IN (
+    SELECT e2.nombre
+    FROM Equipo e2
+    JOIN Entrenador en2 ON en2.nombre_equipo = e2.nombre
+    WHERE en2.certificado = 'Habilitado'
+);
+
+5. Jugadores Arqueros con tarjeta amarilla en el primer tiempo
+Algebra Relacional:
+π nombre, apellido (σ posicion_juego == 'Arquero' and tipo_sancion == 'Tarjeta_Amarilla' and minuto <= 45 (jugador ⋈ persona ⋈ sancion_persona ⋈ sancion))
+SQL:
+SELECT p.nombre, p.apellido
+FROM Jugador j, Persona p, Sancion_Persona sp, Sancion s
+WHERE j.cedula_persona = p.cedula
+AND sp.cedula_persona = p.cedula
+AND s.id_sancion = sp.id_sancion
+AND j.posicion_juego = 'Arquero'
+AND s.tipo_sancion = 'Tarjeta_Amarilla'
+AND CAST(s.minuto AS UNSIGNED) <= 45;
